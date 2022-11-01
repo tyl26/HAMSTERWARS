@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+.battleImg{
+  width: 250px;
+  height: 200px;
+}

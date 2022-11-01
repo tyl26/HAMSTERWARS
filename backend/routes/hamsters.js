@@ -28,8 +28,6 @@ routes.route('/hamsters').get(function (req, response) {
 
 
 
-
-
 // hömtar en specifik hamster med hjälp av id 
 routes.route('/hamsters/:id').get(function (req, response) {
     let connectDB = db.getDb()
@@ -75,7 +73,7 @@ routes.route('/hamsters').post(function (req, response) {
 //uppdaterar vår databas
 
 
-routes.route('/hamsters/:id').put(function (req, response) {
+routes.route('/hamsters/:id').put( function (req, response) {
     let connectDB = db.getDb()
     let myquery = {
         _id: ObjectId(req.params.id)
@@ -88,11 +86,11 @@ routes.route('/hamsters/:id').put(function (req, response) {
         }
     }
     connectDB.collection('hamster')
-        .updateOne(myquery, updatedHamster, function (err, result) {
+        .updateOne(myquery, updatedHamster,  function (err, result) {
             if (err) {
                 response.status(400).json('ops, something is not right!')
             }
-            response.sendStatus(200)
+             response.sendStatus(200)
         })
 
 
@@ -101,19 +99,15 @@ routes.route('/hamsters/:id').put(function (req, response) {
 
 
 //tarbort från databasen
-routes.route('/hamsters/:id').delete(function (req, response) {
-    let connectDB = db.getDb()
-    let myquery = {
-        _id: ObjectId(req.params.id)
-    };
-   
-    connectDB.collection('hamster')
-        .deleteOne(myquery, function (err) {
-            if (err) {
-                response.sendStatus(400)
-            }
-            response.sendStatus(200)
-        })
+routes.route('/hamsters/:id').delete(function (req, res) {
+    let connectDB = db.getDb();
+    let myquery = {_id: ObjectId(req.params.id)};
+    connectDB
+    .collection('hamster')
+    .deleteOne(myquery, function(err) {
+        if (err) throw err;
+        res.sendStatus(200);
+    })
 
 })
 
