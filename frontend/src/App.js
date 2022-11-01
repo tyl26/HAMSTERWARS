@@ -1,13 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Starts from './pages/Starts';
+import Gallery from './pages/Gallery';
+import Battle from './pages/Battle';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-       Welcome to hamsterwars!
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Starts />}></Route>
+        <Route path='/gallery' element={<Gallery />}></Route>
+        <Route path='/battle' element={<Battle />}></Route>
+      </Routes>
+    </Router>
+   
   );
 }
 

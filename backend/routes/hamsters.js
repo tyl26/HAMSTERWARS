@@ -26,7 +26,7 @@ routes.route('/hamsters').get(function (req, response) {
 })
 
 
-//slump bilder ska göras här 
+
 
 
 
@@ -53,13 +53,11 @@ routes.route('/hamsters/:id').get(function (req, response) {
 routes.route('/hamsters').post(function (req, response) {
     let connectDB = db.getDb();
     let newHamster = {
-        
-        //idindex?
         name: req.body.name,
         age: req.body.age,
         favFood: req.body.favFood,
         loves: req.body.loves,
-        //bilden ska hit
+        imgName: req.body.imgName,
         wins: 0,
         defeats: 0,
         games: 0,
@@ -101,22 +99,51 @@ routes.route('/hamsters/:id').put(function (req, response) {
 
 })
 
-//raderar en hamster från databasen
 
+//tarbort från databasen
 routes.route('/hamsters/:id').delete(function (req, response) {
     let connectDB = db.getDb()
     let myquery = {
         _id: ObjectId(req.params.id)
     };
+   
     connectDB.collection('hamster')
         .deleteOne(myquery, function (err) {
             if (err) {
                 response.sendStatus(400)
             }
-
             response.sendStatus(200)
         })
+
 })
+
+
+//slump bilder ska göras här för tävlingen
+
+routes.route('/hamster/random').get(function (req, res) {
+    let connectDB = db.getDb('Hamsters');
+    connectDB.collection('hamster')
+        .find({})
+        .toArray(function (err, result) {
+            //göra kopisa på hamster aaray
+            let hamstersarray = [...result];
+            //första hamster
+            let hamsterOneid = [Math.floor(Math.random() * result.length)]
+            //andrahamster
+            let randomHamsterOne = hamstersarray[Math.floor(Math.random() * result.length)];
+            //tabort hamster i list kopian
+            hamstersarray.splice(hamsterOneid, 1)
+
+            //hämtar den andra hamster
+            let randomHamstertwo = hamstersarray[Math.floor(Math.random() * result.length)];
+
+            //sätter båda hamster i en varible
+            let randomHamsters = [randomHamsterOne, randomHamstertwo]
+
+            if (err) throw err;
+            res.json(randomHamsters)
+        })
+});
 
 
 
