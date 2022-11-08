@@ -1,11 +1,11 @@
 # HAMSTERWARS-inlamning
 
-##Om Appen
+## Om Appen
 
  Ett roligt spel där man får ett random lista av 2 hamstrar. Som spelar ska du välja vem av två hamstrar som spelar som är sötast. Hamstrarna samlas på vinster och förluster. 
 Spelaran kommer även få tillgång till gallery(allahamstrar)
 
-##Frontend sida 
+## Frontend sida 
 
 ###### Pages
 
@@ -28,31 +28,34 @@ ADD hamster formen har jag lagt i en popup modal.
 Jag har även två iconer för static och history 
 |
 |
-**static **
+**static**
 I den här sidan har jag fetchat att top fem. 
 top fem vinnarna och top fem förlorarna. 
 
-**history **
+**history**
 
 Här har jag fetchat båda matches och hamsters. Sedan jämfört hamstranas (har varit med i spelet) id med hamstrarnas id (i hamsterlistan).
 Om de har samma id så ska jag kunna ha tillgång till deras info så som bilder och namn för att sedan mappa och skriva ut på webbsidan.
 
 
 
-##Backend
+## Backend
 
 I backend började jag med att göra servern och en configfil för mina "hemligheter". 
 har gjort så att min env.fil är gömnd 
 
 
 **servern**
+
 Där använder jag express och cors och kör en app listen och middlewares.
 jag tar även emot min (connectar)databas och mina routes och varibles från min configfil så som min PORT. 
 
 **Databas*
+
 I min databas fil här kopplar jag min mongodb och säger vilket databas jag vill ha för att sen kunna ha till gång till mina collections i mina routes. Exporteras till min routes.js
 
 **Routes**
+
 Min routes folder har två routes hamsters.js och matches.js.
 I de använder jag mig av express och express.router()
 sedan tar jag även in min databas från min database.js
@@ -60,17 +63,19 @@ sedan tar jag även in min databas från min database.js
 -en för hamsters
 
 **endpoints**
+
 GET + GET:ID+ GET/RANDOM
 PUT
 DELETE
 POST
 
 -en för matches
+
 GET + 
 DELETE
 POST
 
 
 
-Vill ha feedback om vad jag kan förbättra eller tänka på till framtiden. 
+###### Vill ha feedback om vad jag kan förbättra eller tänka på till framtiden. 
 
