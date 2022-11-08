@@ -232,7 +232,7 @@ img{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 10rem;
+  margin-top: 5rem;
   gap: 3rem;
 
 }
@@ -242,6 +242,11 @@ img{
   text-align: center;
   font-family: var(--prim-font);
   color: white;
+  margin-top: 5rem;
+
+}
+.name{
+  margin: .5rem;
 
 }
 
@@ -283,6 +288,7 @@ img{
 .resultContainer h1 {
   font-size: 2rem;
   font-family: var(--prim-font);
+  text-align: center;
 }
 
 .resultTitle {
@@ -301,8 +307,8 @@ img{
 
 .winner img,
 .loser img {
-  max-width: 40vw;
-  height: 300px;
+  width: 250px;
+  height: 200px;
 }
 
 
@@ -357,8 +363,8 @@ img{
 
 
 .battleImg {
-  max-width: 75vw;
-  height: 35vh;
+  width: 350px;
+  height: 300px;
   border-radius: 1rem;
   cursor: pointer;
 }

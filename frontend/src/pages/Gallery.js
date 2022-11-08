@@ -7,10 +7,9 @@ import { IoChevronBackCircleSharp } from 'react-icons/io5'
 import { IoStatsChart } from 'react-icons/io5'
 import { FaHistory } from 'react-icons/fa'
 
-
-
 import Modal from 'react-modal'
 import { Link, useNavigate } from 'react-router-dom'
+import { baseURL } from '../utils/baseURL'
 
 function Gallery() {
   const [AllHamsters, setAllHamsters] = useState([])
@@ -28,10 +27,12 @@ function Gallery() {
 
   //hämtar alla hamstrar
   function getAllHamsters() {
-    fetch('http://localhost:1997/hamsters')
+    fetch(`${baseURL}hamsters`)
       .then((res) => res.json())
       .then((data) => setAllHamsters(data))
   }
+
+
 
   //lägger till en ny hamster
 
@@ -44,7 +45,7 @@ function Gallery() {
       imgName: img,
     }
     console.log(newHamster);
-    const res = await fetch('http://localhost:1997/hamsters', {
+    const res = await fetch(`${baseURL}hamsters`, {
       method: "POST",
       body: JSON.stringify(newHamster),
       headers: { "Content-Type": "application/json" }
@@ -57,7 +58,7 @@ function Gallery() {
   //tar bort en hamster 
   async function deleteHamster(id) {
 
-    const response = await fetch('http://localhost:1997/hamsters/' + id, {
+    const response = await fetch(`${baseURL}hamsters/` + id, {
       method: "DELETE",
 
     })

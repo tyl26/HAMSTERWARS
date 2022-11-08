@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { IoChevronBackCircleSharp } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
+import { baseURL } from '../utils/baseURL'
 
 function History() {
     const [matches, setMatches] = useState([])
@@ -10,13 +11,13 @@ function History() {
 
 
     function getAllHamsters() {
-        fetch('http://localhost:1997/hamsters')
+        fetch(`${baseURL}hamsters`)
             .then((res) => res.json())
             .then((data) => setHamsters(data))
     }
 
     async function getMatches() {
-        const response = await fetch("http://localhost:1997/matches", {
+        const response = await fetch(`${baseURL}matches`, {
             method: 'GET'
         })
         const data = await response.json()
@@ -26,7 +27,7 @@ function History() {
 
     async function deleteMatch(id) {
         window.location.reload();
-        const response = await fetch('http://localhost:1997/matches/' + id,
+        const response = await fetch(`${baseURL}matches/` + id,
             { method: 'DELETE' })
 
         const data = await response.json()
@@ -39,7 +40,7 @@ function History() {
     useEffect(() => {
         getAllHamsters()
         getMatches()
-
+       
 
     }, [])
 
@@ -51,7 +52,7 @@ function History() {
             <h1 className='galleryTitle'>Hamsters History</h1>
 
             <section className="galleryContainer">
-                {matches.length > 0 && Hamsters.length > 0 ? matches.map(match => {
+                {matches.length > 0 && Hamsters.length > 0 ? [...matches].reverse().map(match => {
 
                     let winner = Hamsters.find(id => { return id._id === match.winner });
                     let loser = Hamsters.find(({ _id }) => _id === match.loser);

@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { IoChevronBackCircleSharp } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
+import { baseURL } from '../utils/baseURL'
 
 function Statistik() {
 
@@ -11,7 +12,7 @@ function Statistik() {
 
 
     useEffect(() => {
-        fetch('http://localhost:1997/hamsters')
+        fetch(`${baseURL}hamsters`)
             .then((res) => res.json())
             .then((data) => setTopFives(data))
 
