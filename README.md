@@ -9,10 +9,12 @@ Spelaran kommer även få tillgång till gallery(allahamstrar)
 
 ###### Pages
 
-**Startsida **
+**Startsida**
+
 Välkommen sida som visar var det är. Spelaren får välja om den vill till galleriet eller börja spela
 
 **Battle**
+
 Detta är spel sidan där har jag fetchat så att man får 2 random hamster bilder som ska tävla mot varandra 
 när man klickar på den man tycker är sötast har jag gjort en popup modal med resultatet i. Resultaten har jag lagt i en componant. I den står finns det med mer info hur många pöeng båda vinnaren och förlorarens pöeng. 
 och att man kan starta en ny match. 
@@ -20,6 +22,7 @@ och att man kan starta en ny match.
 Har även gjort så att om man inte tycker att nån av hamstrarna är söta så kan man välja ett ny spel. 
 
 **gallery **
+
 Fetchar alla Hamstrar och använder flexbox för att få en grid utsiden på bilderna. 
 I galleri har jag lagt till en fuction där man kan klicka på bilden för att få mier info om respektive hamster.
 Har också fetchat så att man kan lägga till en ny hamster till spelet eller ta bort en hamster.
@@ -28,7 +31,9 @@ ADD hamster formen har jag lagt i en popup modal.
 Jag har även två iconer för static och history 
 |
 |
+
 **static**
+
 I den här sidan har jag fetchat att top fem. 
 top fem vinnarna och top fem förlorarna. 
 
