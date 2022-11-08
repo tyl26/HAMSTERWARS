@@ -24,6 +24,7 @@ function Gallery() {
   const [modal, setModal] = useState(false);
 
   const navigate = useNavigate()
+  
 
   //hämtar alla hamstrar
   function getAllHamsters() {
@@ -95,14 +96,14 @@ function Gallery() {
     <section>
 
       <Link to='/statistik'><IoStatsChart className='statsIcon'/></Link>
-      <Link to='/statistik'><FaHistory className='historyIcon'/></Link>
-
+      
+      
+      <FaHistory onClick={()=> navigate('/history')} className='historyIcon'/>
+      {/* <button onClick={()=> navigate('/history')} className='historyIcon'>jgdf</button> */}
+     
       <h2 className="galleryTitle">Gallery</h2>
       <AiOutlineAppstoreAdd className='addIcon' onClick={toggleModal} />
       <IoChevronBackCircleSharp className='backIcon' onClick={() =>navigate('/')}/>
-
-
-
 
 
       <section className='galleryContainer'>
@@ -117,6 +118,7 @@ function Gallery() {
         >
 
           <form className='addForm' onSubmit={() => addNewHamster()}>
+            <h1 >Add your Hamster</h1>
             <b>Name:</b>
             <label>
               <input className='inputText' type="text" placeholder='Name' onChange={(e) => setName(e.target.value)} />
@@ -152,8 +154,6 @@ function Gallery() {
               <img className='galleryImg' onClick={() => { getInfo(hamster) }} src={hamster.imgName} alt="" />
               <RiDeleteBack2Fill className='delete' onClick={() => deleteHamster(hamster._id)} />
               <h1 className='hamsterName'>{hamster.name}</h1>
-
-
 
             </section>
           </section>)}

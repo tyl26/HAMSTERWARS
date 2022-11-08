@@ -5,7 +5,7 @@ function Result(result) {
     const [win, setWinner] = useState([]);
     const [loser, setLoser] = useState([]);
 
-    console.log(result);
+    // console.log(result);
 
     async function getWinner() {
         const response = await fetch('http://localhost:1997/hamsters/' + result.result.winner._id, {

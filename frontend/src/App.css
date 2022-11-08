@@ -9,6 +9,11 @@ body {
   padding: 0;
   background-color: var(--primBack-color)
 }
+img{
+  border: var(--img-border-color) 5px solid;
+  border-radius: 1rem;
+}
+
 
 :root {
   --primBack-color: #4F4E28;
@@ -54,11 +59,13 @@ body {
 .logo {
   margin: 2rem auto;
   width: 200px;
+  border: none;
 }
 
 .primaryBtn,
 .submitBtn,
-.newBattle {
+.newBattle,
+.deleteMatch {
   border: var(--btn-border-color) solid 2px;
   border-radius: 2rem;
   padding: 1rem;
@@ -74,7 +81,8 @@ body {
 
 .primaryBtn:hover,
 .submitBtn:hover,
-.newBattle:hover {
+.newBattle:hover,
+.deleteMatch:hover {
   transition: .4s ease-in-out;
   background-color: white;
   color: var(--primBack-color);
@@ -110,19 +118,21 @@ body {
   cursor: pointer;
   color: var(--img-border-color);
 }
-.statsIcon{
+
+.statsIcon {
   right: 5rem;
   font-size: 1.8rem;
 }
-.historyIcon{
+
+.historyIcon {
   right: 8rem;
   font-size: 1.85rem;
 }
 
 .addIcon:hover,
-.backIcon:hover ,
+.backIcon:hover,
 .statsIcon:hover,
-.historyIcon:hover{
+.historyIcon:hover {
   color: rgb(21, 218, 100);
   transition: .4s ease-in-out;
 }
@@ -154,7 +164,6 @@ body {
 .galleryImg {
   width: 250px;
   height: 200px;
-  border: var(--img-border-color) 5px solid;
 }
 
 .hamsterName {
@@ -171,7 +180,9 @@ body {
   gap: 2rem;
   margin: 1rem;
 }
-
+.addForm h1 {
+  font-family: var(--sec-font);
+}
 
 .inputText {
   padding: 1rem;
@@ -231,31 +242,25 @@ body {
   font-size: 1.5rem;
 }
 
-.newBattle {
+.newBattle,
+.deleteMatch {
   background-color: var(--primBack-color);
   display: flex;
   justify-content: center;
 }
 
-
-
 /* result Css */
-/* .resultContainer {
-  display: flex;
-  flex-direction: column;
-
-} */
 
 .winnerResult,
 .downBelow {
   text-align: center;
   font-size: 2rem;
   font-family: var(--prim-font);
-  
+
 }
 
-.downBelow{
-font-size: 1.3rem;
+.downBelow {
+  font-size: 1.3rem;
 }
 
 
@@ -286,12 +291,37 @@ font-size: 1.3rem;
   text-align: center;
 
 }
+
 .winner img,
-.loser img{
-  max-width:40vw;
+.loser img {
+  max-width: 40vw;
   height: 300px;
 }
 
+
+/* match css */
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  background-color:#ffdf9a90;
+  padding: 2rem;
+  margin: 0 5rem 0 5rem;
+  border-radius: 2rem;
+}
+/* .historyTitle{
+  font-family: var(--sec-font);
+  text-align: center;
+  color: white;
+  font-weight: 400;
+} */
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+  justify-content: center;
+  
+}
 
 
 
@@ -349,24 +379,26 @@ font-size: 1.3rem;
 
 /* statistiks css */
 
-.topFives{
+.topFives {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
-  gap: 2rem;
+  gap: 8rem;
 }
-.topFives h1{
+
+.topFives h1 {
   font-size: 2rem;
   font-family: var(--prim-font);
   color: var(--btn-border-color);
 }
-.topFives h2{
+
+.topFives h2 {
   font-size: 1.5rem;
   font-family: var(--prim-font);
 }
 
-
-
-
-
+.topImg{
+  width: 320px;
+  height: 300px;
+}

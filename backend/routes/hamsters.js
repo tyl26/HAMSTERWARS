@@ -1,6 +1,4 @@
-const {
-    response
-} = require('express');
+
 const express = require('express')
 const routes = express.Router()
 
@@ -17,9 +15,7 @@ routes.route('/hamsters').get(function (req, response) {
         .toArray(function (err, result) {
 
             if (err) {
-                response.sendStatus(404).json({
-                    err: 'connat find any hamsters :('
-                })
+                response.status(404).json('opp cant find hamsters')
             }
             response.status(200).json(result)
         })

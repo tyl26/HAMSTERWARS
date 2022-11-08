@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import Result from '../components/Result';
+import { IoChevronBackCircleSharp } from 'react-icons/io5'
+import { Link } from 'react-router-dom';
+
 
 function Battle() {
     const [battle, setHamsterBattle] = useState([])
+    const [match, setMatch] = useState([])
     const [winner, setWinner] = useState()
     const [loser, setLoser] = useState()
     const [modal, setModal] = useState(false);
 
 
+    //fetchar random hamsters
     function getRandom() {
         fetch('http://localhost:1997/hamster/random')
             .then(res => res.json())
@@ -15,13 +20,13 @@ function Battle() {
     }
 
     useEffect(() => {
-
         getRandom(setHamsterBattle)
     }, [])
 
+
+    //hanterar och uppdaterar vår hamsters vinster
     async function updatePoints(hamster) {
 
-        // setHamsterBattle(battle => battle.map((hams) => hams._id === hamster._id ? { ...hams, wins: hams.wins + 1, games: hams.games + 1 } : hams))
 
         const points = {
             wins: hamster.wins + 1,
@@ -37,13 +42,11 @@ function Battle() {
         const data = await response.text()
         console.log(data);
 
-        // winnerModal()
 
     }
+
+    //hanterar och uppdaterar vår hamsters defeats
     async function uppdateLoser(hamster) {
-
-
-        // setHamsterBattle(battle => battle.map((hams) => hams._id !== hamster._id ? { ...hams, defeats: hams.defeats + 1, games: hams.games + 1 } : hams))
 
         const points = {
             wins: hamster.wins,
@@ -62,36 +65,60 @@ function Battle() {
 
     }
 
+
+    //hanterar on click 
     async function handleCute(winner, loser) {
         await updatePoints(winner)
         await uppdateLoser(loser)
         setWinner(winner)
         setLoser(loser)
         getRandom()
-
         winnerModal()
+        addMatch(winner, loser)
     }
 
+    //hämstar modal för slut resultatet
     function winnerModal() {
         setModal(!modal)
 
     }
 
-    // console.log(winner);
 
+//Lägger till matches winner och loser i en match obj. 
+async function addMatch(winner, loser) {
+    // console.log(winner, loser);
+    const matchObj={
+        winner: winner._id,
+        loser: loser._id,
+        namewinner: winner.name,
+        nameloser: loser.name,
+        gameswinner: winner.games,
+        gamesloser : loser.games
+
+
+    }
+    const response = await fetch("http://localhost:1997/matches", {
+        method: 'POST',
+        body: JSON.stringify(matchObj),
+        headers: { "Content-Type": "application/json" }
+    });
+    const data = await response.text();
+    console.log(data);
+    setMatch({ "winner": winner._id, "loser": loser._id })
+    // console.log('winner is: ' + winner.name + ' loser is: ' + loser.name);
+}
     return (
         <div>
+       <Link to='/'> <IoChevronBackCircleSharp className='backIcon'/></Link>
+
             <h1 className='pick'>Pick who is the cutest!</h1>
 
             <section className='battleContainer'>
 
 
-                {battle ? battle.map((hamster, i) =>
+                {battle && battle.map((hamster, i) =>
                     <section key={i}>
 
-                        {/* <h1>w{hamster.wins}</h1>
-                        <h1>d{hamster.defeats}</h1>
-                    <h1>g{hamster.games}</h1> */}
                         <img className='battleImg' src={hamster.imgName} onClick={() => {
                             handleCute(hamster, battle?.filter(hams => hams !== hamster)[0])
                         }} />
@@ -99,7 +126,7 @@ function Battle() {
 
                     </section>
 
-                ) : null}
+                )}
 
             </section>
 

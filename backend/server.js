@@ -11,6 +11,7 @@ app.use(cors({
 }));
 app.use(express.json())
 app.use(require('./routes/hamsters'))
+app.use(require('./routes/matches'))
 
 const db = require('./database/database')
 
