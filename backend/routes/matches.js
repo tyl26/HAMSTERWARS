@@ -6,6 +6,7 @@ const routes = express.Router();
 const db = require('../database/database')
 const ObjectId = require('mongodb').ObjectId;
 //lista över våra matches
+
 routes.route('/matches').get(function (req, response) {
     let connectDB = db.getDb('Hamsters');
     connectDB.collection('matches')
@@ -19,20 +20,6 @@ routes.route('/matches').get(function (req, response) {
         })
 })
 
-//GET match from ID
-routes.route("/matches/:id").get(function (req, res) {
-    console.log(req.params);
-    let _id = req.params.id;
-    console.log(_id);
-    db.getDb('Hamsters')
-        .collection('matches')
-        .findOne({
-            _id: ObjectId(_id)
-        }, function (err, result) {
-            if (err) throw err;
-            res.json(result);
-        });
-});
 
 //POST new match
 routes.route("/matches").post(function (req, res) {
