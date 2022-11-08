@@ -21,7 +21,7 @@ och att man kan starta en ny match.
 
 Har även gjort så att om man inte tycker att nån av hamstrarna är söta så kan man välja ett ny spel. 
 
-**gallery **
+**gallery**
 
 Fetchar alla Hamstrar och använder flexbox för att få en grid utsiden på bilderna. 
 I galleri har jag lagt till en fuction där man kan klicka på bilden för att få mier info om respektive hamster.
@@ -32,12 +32,12 @@ Jag har även två iconer för static och history
 |
 |
 
-**static**
+**Static**
 
 I den här sidan har jag fetchat att top fem. 
 top fem vinnarna och top fem förlorarna. 
 
-**history**
+**History**
 
 Här har jag fetchat båda matches och hamsters. Sedan jämfört hamstranas (har varit med i spelet) id med hamstrarnas id (i hamsterlistan).
 Om de har samma id så ska jag kunna ha tillgång till deras info så som bilder och namn för att sedan mappa och skriva ut på webbsidan.
@@ -50,7 +50,7 @@ I backend började jag med att göra servern och en configfil för mina "hemligh
 har gjort så att min env.fil är gömnd 
 
 
-**servern**
+**Servern**
 
 Där använder jag express och cors och kör en app listen och middlewares.
 jag tar även emot min (connectar)databas och mina routes och varibles från min configfil så som min PORT. 
