@@ -28,7 +28,7 @@ function Battle() {
     //hanterar och uppdaterar vår hamsters vinster
     async function updatePoints(hamster) {
 
-
+        //den nya state på poängen 
         const points = {
             wins: hamster.wins + 1,
             defeats: hamster.defeats,
@@ -40,6 +40,7 @@ function Battle() {
             body: JSON.stringify(points),
             headers: { "Content-Type": "application/json" }
         })
+        //har text för att det hämtar statusen koden 200 från backend
         const data = await response.text()
         console.log(data);
 
@@ -48,6 +49,8 @@ function Battle() {
 
     //hanterar och uppdaterar vår hamsters defeats
     async function uppdateLoser(hamster) {
+
+        //den nya state på poängen 
 
         const points = {
             wins: hamster.wins,
@@ -60,6 +63,9 @@ function Battle() {
             body: JSON.stringify(points),
             headers: { "Content-Type": "application/json" }
         })
+
+        //har text för att det hämtar statusen koden 200 från backend
+
         const data = await response.text()
         console.log(data);
 
@@ -67,7 +73,7 @@ function Battle() {
     }
 
 
-    //hanterar on click 
+    //hanterar dessa functioner on click 
     async function handleCute(winner, loser) {
         await updatePoints(winner)
         await uppdateLoser(loser)
@@ -85,38 +91,36 @@ function Battle() {
     }
 
 
-//Lägger till matches winner och loser i en match obj. 
-async function addMatch(winner, loser) {
-    // console.log(winner, loser);
-    const matchObj={
-        winner: winner._id,
-        loser: loser._id,
-        namewinner: winner.name,
-        nameloser: loser.name,
-        gameswinner: winner.games,
-        gamesloser : loser.games
-
-
+    //Lägger till matches winner och loser i en matches listan. 
+    //matches endpoint
+    async function addMatch(winner, loser) {
+        const matchObj = {
+            winner: winner._id,
+            loser: loser._id,
+            namewinner: winner.name,
+            nameloser: loser.name,
+            gameswinner: winner.games,
+            gamesloser: loser.games
+        }
+        const response = await fetch(`${baseURL}/matches`, {
+            method: 'POST',
+            body: JSON.stringify(matchObj),
+            headers: { "Content-Type": "application/json" }
+        });
+        const data = await response.text();
+        console.log(data);
+        setMatch({ "winner": winner._id, "loser": loser._id })
     }
-    const response = await fetch(`${baseURL}/matches`, {
-        method: 'POST',
-        body: JSON.stringify(matchObj),
-        headers: { "Content-Type": "application/json" }
-    });
-    const data = await response.text();
-    console.log(data);
-    setMatch({ "winner": winner._id, "loser": loser._id })
-    // console.log('winner is: ' + winner.name + ' loser is: ' + loser.name);
-}
     return (
         <div>
-       <Link to='/'> <IoChevronBackCircleSharp className='backIcon'/></Link>
+
+            <Link to='/'> <IoChevronBackCircleSharp className='backIcon' /></Link>
 
             <h1 className='pick'>Pick who is the cutest!</h1>
 
+
+            {/* mappar listan för att få random hamster */}
             <section className='battleContainer'>
-
-
                 {battle && battle.map((hamster, i) =>
                     <section key={i}>
 
@@ -132,29 +136,31 @@ async function addMatch(winner, loser) {
             </section>
 
 
+            {/* modal för slut resultat med poäng osv. */}
             {modal && (
                 <div className="modal">
                     <div onClick={winnerModal} className="myoverlay"></div>
                     <div className="mymodal">
-                        
+
                         <h1 className='resultTitle'>Result!</h1>
                         <section className='container'>
 
-                        <Result result={{ winner, loser }} />
+
+                            {/* skickar in states till reslut componant  */}
+                            <Result result={{ winner, loser }} />
 
 
-                        <button className="close-modal" onClick={() => { winnerModal(); getRandom() }}>
-                            X
-                        </button>
+                            <button className="close-modal" onClick={() => { winnerModal(); getRandom() }}>
+                                X
+                            </button>
 
-                        <button className='newBattle' onClick={() => { getRandom(); winnerModal(); }}>New battle</button>
+                            <button className='newBattle' onClick={() => { getRandom(); winnerModal(); }}>New battle</button>
                         </section>
                     </div>
                 </div>
             )}
 
-            {/* <Result data={winner} lose ={loser} /> */}
-
+            {/* kör ett nytt spel */}
             <button className='newBattle' onClick={() => getRandom()}>New battle</button>
         </div>
     )

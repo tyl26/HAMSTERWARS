@@ -26,13 +26,14 @@ img{
 
 
 /* start pages  */
-
+.spinner{
+  color: white;
+}
 
 .startPage {
   margin: 5rem auto;
   padding: 2rem;
-  /* width: 480px; */
-  /* background-color: #4F4E28; */
+
 }
 
 .startContainer {

@@ -1,3 +1,5 @@
+
+//connectar med min mongondb med lösen 
 const {
     MongoClient
 } = require('mongodb')
@@ -11,6 +13,7 @@ const client = new MongoClient(DB, {
 
 let _db;
 
+//hämtar databasen och exporterar min connection
 module.exports = {
     connectToServer: function (callback) {
         client.connect(function (err, db) {

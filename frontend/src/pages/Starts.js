@@ -12,7 +12,7 @@ function Starts() {
                 <img className='logo' src={hamsterLogo} alt="hamster logo" />
 
                 
-
+          {/* skickar användaren vidare till respiktive sida  */}
                 <Link className='primaryBtn' to='/gallery'>Gallery</Link>
                 <Link className='primaryBtn' to='/battle'>Start Battle</Link>
             </section>

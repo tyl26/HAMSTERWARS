@@ -10,7 +10,7 @@ function Statistik() {
     const [topFives, setTopFives] = useState([])
 
 
-
+    //hömtar alla hamstrar
     useEffect(() => {
         fetch(`${baseURL}/hamsters`)
             .then((res) => res.json())
@@ -21,12 +21,11 @@ function Statistik() {
     return (
         <section>
             <Link to='/gallery'> <IoChevronBackCircleSharp className='backIcon' /></Link>
-
-
             <section className='topFives'>
 
 
-                {/* getting top winners */}
+                {/* mappar genom alla hamstrar och sorterar efter vem som har högst poäng och skriver bara ut de top 5*/}
+                {/* top winners */}
                 <section>
                     <h1>Top Winners</h1>
                     {topFives ? topFives
@@ -47,7 +46,7 @@ function Statistik() {
                 </section>
 
 
-
+                {/* mappar genom alla hamstrar och sorterar efter vem som har högst poäng och skriver bara ut de top 5*/}
                 {/* getting top Losers  */}
                 <section>
                     <h1>Top Losers</h1>
@@ -59,7 +58,8 @@ function Statistik() {
                                     <section className='topWinners'>
                                         <img className='topImg' src={defeat.imgName} alt="" />
                                         <h2 className='name'>{defeat.name}</h2>
-                                        <b>Loses</b><p>{defeat.defeats}</p>                                </section>
+                                        <b>Loses</b><p>{defeat.defeats}</p>
+                                    </section>
                                 </section>
                             )
                         }) : null}

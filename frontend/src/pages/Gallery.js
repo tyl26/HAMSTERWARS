@@ -7,11 +7,19 @@ import { IoChevronBackCircleSharp } from 'react-icons/io5'
 import { IoStatsChart } from 'react-icons/io5'
 import { FaHistory } from 'react-icons/fa'
 
+
 import Modal from 'react-modal'
 import { Link, useNavigate } from 'react-router-dom'
+
+
+//min URL som jag har fått från render
 import { baseURL } from '../utils/baseURL'
 
 function Gallery() {
+
+
+  //mina states
+
   const [AllHamsters, setAllHamsters] = useState([])
   const [hamsterInfo, setHamsterInfo] = useState()
   const [name, setName] = useState()
@@ -23,7 +31,7 @@ function Gallery() {
   const [modal, setModal] = useState(false);
 
   const navigate = useNavigate()
-  
+
 
   //hämtar alla hamstrar
   function getAllHamsters() {
@@ -35,7 +43,6 @@ function Gallery() {
 
 
   //lägger till en ny hamster
-
   async function addNewHamster() {
     const newHamster = {
       name: name,
@@ -50,8 +57,10 @@ function Gallery() {
       body: JSON.stringify(newHamster),
       headers: { "Content-Type": "application/json" }
     })
+    //och uppdaterar den nya listan med den nya hamster
     const data = await res.json()
     setAllHamsters([...AllHamsters, data])
+
   }
 
 
@@ -64,6 +73,8 @@ function Gallery() {
     })
     const data = await response.text()
     console.log(data);
+
+    //uppdaterar listan utan den borttagna hamstern
     setAllHamsters(hamsters => hamsters.filter(hamsters => hamsters._id !== id))
 
   }
@@ -71,16 +82,15 @@ function Gallery() {
 
   //öppna och stänga form modulen för att lägga till en ny hamster
   function toggleModal() {
-
     setIsOpen(!isOpen)
-
   }
+
+  //modal för att få mer info om hamster
   function infoModal() {
     setModal(!modal)
   }
 
 
-  //get med specifik id testa det!
   function getInfo(hamsterInfo) {
     setHamsterInfo(hamsterInfo)
     infoModal()
@@ -96,19 +106,18 @@ function Gallery() {
   return (
     <section>
 
-      <Link to='/statistik'><IoStatsChart className='statsIcon'/></Link>
-      
-      
-      <FaHistory onClick={()=> navigate('/history')} className='historyIcon'/>
-      {/* <button onClick={()=> navigate('/history')} className='historyIcon'>jgdf</button> */}
-     
+      {/* mina icons */}
+      <Link to='/statistik'><IoStatsChart className='statsIcon' /></Link>
+      <FaHistory onClick={() => navigate('/history')} className='historyIcon' />
       <h2 className="galleryTitle">Gallery</h2>
       <AiOutlineAppstoreAdd className='addIcon' onClick={toggleModal} />
-      <IoChevronBackCircleSharp className='backIcon' onClick={() =>navigate('/')}/>
+      <IoChevronBackCircleSharp className='backIcon' onClick={() => navigate('/')} />
+
 
 
       <section className='galleryContainer'>
 
+        {/* Form modalen för att lägga till en ny hamster */}
         <Modal isOpen={isOpen}
           onRequestClose={toggleModal}
           contentLabel="My dialog"
@@ -147,7 +156,10 @@ function Gallery() {
         </Modal>
 
 
-        {AllHamsters.map((hamster, i) =>
+
+
+        {/* mappar hamster och loading spinner */}
+        {AllHamsters? AllHamsters.map((hamster, i) =>
 
           <section key={i} >
 
@@ -157,8 +169,12 @@ function Gallery() {
               <h1 className='hamsterName'>{hamster.name}</h1>
 
             </section>
-          </section>)}
+          </section>) :
+          null
+        }
 
+
+        {/* Info modal för respektiva hamster */}
         {modal && (
           <div className="modal">
             <div onClick={infoModal} className="myoverlay"></div>
