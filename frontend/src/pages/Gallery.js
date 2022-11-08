@@ -57,6 +57,7 @@ function Gallery() {
       body: JSON.stringify(newHamster),
       headers: { "Content-Type": "application/json" }
     })
+    
     //och uppdaterar den nya listan med den nya hamster
     const data = await res.json()
     setAllHamsters([...AllHamsters, data])

@@ -13,7 +13,7 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<Starts />}></Route>
-        <Route path='/gallery' element={<Gallery />}></Route>
+        <Route exakt path='/gallery' element={<Gallery />}></Route>
         <Route path='/history' element={<History />}></Route>
         <Route path='/battle' element={<Battle />}></Route>
         <Route path='/statistik' element={<Statistik />}></Route>
