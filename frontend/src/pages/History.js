@@ -11,13 +11,13 @@ function History() {
 
 
     function getAllHamsters() {
-        fetch(`${baseURL}hamsters`)
+        fetch(`${baseURL}/hamsters`)
             .then((res) => res.json())
             .then((data) => setHamsters(data))
     }
 
     async function getMatches() {
-        const response = await fetch(`${baseURL}matches`, {
+        const response = await fetch(`${baseURL}/matches`, {
             method: 'GET'
         })
         const data = await response.json()
@@ -27,7 +27,7 @@ function History() {
 
     async function deleteMatch(id) {
         window.location.reload();
-        const response = await fetch(`${baseURL}matches/` + id,
+        const response = await fetch(`${baseURL}/matches/` + id,
             { method: 'DELETE' })
 
         const data = await response.json()

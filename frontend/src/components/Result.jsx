@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
+import { baseURL } from '../utils/baseURL';
 
 function Result(result) {
     const [win, setWinner] = useState([]);
@@ -8,7 +9,7 @@ function Result(result) {
     // console.log(result);
 
     async function getWinner() {
-        const response = await fetch('http://localhost:1997/hamsters/' + result.result.winner._id, {
+        const response = await fetch(`${baseURL}/hamsters/` + result.result.winner._id, {
             method: "GET"
         })
         const data = await response.json()
@@ -17,7 +18,7 @@ function Result(result) {
 
 
     async function getLoser() {
-        const response = await fetch('http://localhost:1997/hamsters/' + result.result.loser._id, {
+        const response = await fetch(`${baseURL}/hamsters/` + result.result.loser._id, {
             method: "GET"
         })
         const data = await response.json()

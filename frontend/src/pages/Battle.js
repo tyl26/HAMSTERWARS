@@ -15,7 +15,7 @@ function Battle() {
 
     //fetchar random hamsters
     function getRandom() {
-        fetch(`${baseURL}hamster/random`)
+        fetch(`${baseURL}/hamster/random`)
             .then(res => res.json())
             .then(data => setHamsterBattle(data))
     }
@@ -35,7 +35,7 @@ function Battle() {
             games: hamster.games + 1
         }
 
-        const response = await fetch(`${baseURL}hamsters/` + hamster._id, {
+        const response = await fetch(`${baseURL}/hamsters/` + hamster._id, {
             method: "PUT",
             body: JSON.stringify(points),
             headers: { "Content-Type": "application/json" }
@@ -55,7 +55,7 @@ function Battle() {
             games: hamster.games + 1
         }
 
-        const response = await fetch(`${baseURL}hamsters/` + hamster._id, {
+        const response = await fetch(`${baseURL}/hamsters/` + hamster._id, {
             method: "PUT",
             body: JSON.stringify(points),
             headers: { "Content-Type": "application/json" }
@@ -98,7 +98,7 @@ async function addMatch(winner, loser) {
 
 
     }
-    const response = await fetch("http://localhost:1997/matches", {
+    const response = await fetch(`${baseURL}/matches`, {
         method: 'POST',
         body: JSON.stringify(matchObj),
         headers: { "Content-Type": "application/json" }

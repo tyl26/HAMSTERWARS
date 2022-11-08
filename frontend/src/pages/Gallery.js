@@ -27,7 +27,7 @@ function Gallery() {
 
   //hämtar alla hamstrar
   function getAllHamsters() {
-    fetch(`${baseURL}hamsters`)
+    fetch(`${baseURL}/hamsters`)
       .then((res) => res.json())
       .then((data) => setAllHamsters(data))
   }
@@ -45,7 +45,7 @@ function Gallery() {
       imgName: img,
     }
     console.log(newHamster);
-    const res = await fetch(`${baseURL}hamsters`, {
+    const res = await fetch(`${baseURL}/hamsters`, {
       method: "POST",
       body: JSON.stringify(newHamster),
       headers: { "Content-Type": "application/json" }
@@ -58,7 +58,7 @@ function Gallery() {
   //tar bort en hamster 
   async function deleteHamster(id) {
 
-    const response = await fetch(`${baseURL}hamsters/` + id, {
+    const response = await fetch(`${baseURL}/hamsters/` + id, {
       method: "DELETE",
 
     })

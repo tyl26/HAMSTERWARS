@@ -12,7 +12,7 @@ function Statistik() {
 
 
     useEffect(() => {
-        fetch(`${baseURL}hamsters`)
+        fetch(`${baseURL}/hamsters`)
             .then((res) => res.json())
             .then((data) => setTopFives(data))
 
