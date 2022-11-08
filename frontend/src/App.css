@@ -207,16 +207,23 @@ img{
 /* hamsterinfo  */
 .infoContainer {
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
 }
 
 .infoContainer li {
   font-family: var(--prim-font);
   font-size: 1.5rem;
+  text-align: center;
+  margin-top: 2rem;
+  list-style-type: none;
 }
 
 .infoContainer img {
   width: 300px;
+  margin: 0 auto;
 }
 
 /* battle css */
@@ -308,12 +315,7 @@ img{
   margin: 0 5rem 0 5rem;
   border-radius: 2rem;
 }
-/* .historyTitle{
-  font-family: var(--sec-font);
-  text-align: center;
-  color: white;
-  font-weight: 400;
-} */
+
 
 .items {
   display: flex;
@@ -322,8 +324,6 @@ img{
   justify-content: center;
   
 }
-
-
 
 
 /* modalcontainer css */
@@ -339,7 +339,7 @@ img{
   border-radius: 4px;
   outline: none;
   padding: 20px;
-  width: 95vw;
+  max-width: 95vw;
   height: 90vh;
 
   /* margin: 2rem; */

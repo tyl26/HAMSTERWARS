@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 function Battle() {
     const [battle, setHamsterBattle] = useState([])
-    const [match, setMatch] = useState([])
+    const [setMatch] = useState([])
     const [winner, setWinner] = useState()
     const [loser, setLoser] = useState()
     const [modal, setModal] = useState(false);
@@ -119,7 +119,7 @@ async function addMatch(winner, loser) {
                 {battle && battle.map((hamster, i) =>
                     <section key={i}>
 
-                        <img className='battleImg' src={hamster.imgName} onClick={() => {
+                        <img className='battleImg' src={hamster.imgName} alt='battlePic' onClick={() => {
                             handleCute(hamster, battle?.filter(hams => hams !== hamster)[0])
                         }} />
                         <h1 className='name'>{hamster.name}</h1>

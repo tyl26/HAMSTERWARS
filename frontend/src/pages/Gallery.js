@@ -164,11 +164,10 @@ function Gallery() {
             <div className="mymodal">
               <ul className='infoContainer'>
                 <img src={hamsterInfo ? hamsterInfo.imgName : null} alt="profilePic" />
-                <li><b>Name</b>:{hamsterInfo ? hamsterInfo.name : null}</li>
-                <li><b>Age</b>:  {hamsterInfo ? hamsterInfo.age : null}</li>
+                <li><b>Name</b>: <br />{hamsterInfo ? hamsterInfo.name : null}</li>
+                <li><b>Age</b>: <br /> {hamsterInfo ? hamsterInfo.age : null}</li>
                 <li><b>Loves</b>: <br />{hamsterInfo ? hamsterInfo.loves : null}</li>
                 <li><b>Favorite Foods</b>: <br /> Foods{hamsterInfo ? hamsterInfo.favFood : null}</li>
-                <li><b>Hamster Id</b>: {hamsterInfo ? hamsterInfo._id : null}</li>
               </ul>
               <button className="close-modal" onClick={() => infoModal()}>
                 X
