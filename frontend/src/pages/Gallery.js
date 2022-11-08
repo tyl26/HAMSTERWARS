@@ -9,7 +9,7 @@ import { FaHistory } from 'react-icons/fa'
 
 
 import Modal from 'react-modal'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, redirect, useNavigate } from 'react-router-dom'
 
 
 //min URL som jag har fått från render
@@ -35,7 +35,7 @@ function Gallery() {
 
   //hämtar alla hamstrar
   function getAllHamsters() {
-    fetch(`${baseURL}/hamsters`)
+    fetch(`https://hamsterwarsapi.onrender.com/hamsters`)
       .then((res) => res.json())
       .then((data) => setAllHamsters(data))
   }
@@ -44,6 +44,7 @@ function Gallery() {
 
   //lägger till en ny hamster
   async function addNewHamster() {
+   
     const newHamster = {
       name: name,
       age: age,
@@ -52,16 +53,17 @@ function Gallery() {
       imgName: img,
     }
     console.log(newHamster);
-    const res = await fetch(`${baseURL}/hamsters`, {
+    const res = await fetch(`https://hamsterwarsapi.onrender.com/hamsters`, {
       method: "POST",
       body: JSON.stringify(newHamster),
       headers: { "Content-Type": "application/json" }
     })
-    
+
     //och uppdaterar den nya listan med den nya hamster
     const data = await res.json()
     setAllHamsters([...AllHamsters, data])
-
+    
+    toggleModal()
   }
 
 
@@ -128,7 +130,7 @@ function Gallery() {
           ariaHideApp={false}
         >
 
-          <form className='addForm' onSubmit={() => addNewHamster()}>
+          <form className='addForm' onSubmit={(e) => {addNewHamster(); e.preventDefault()}}>
             <h1 >Add your Hamster</h1>
             <b>Name:</b>
             <label>
