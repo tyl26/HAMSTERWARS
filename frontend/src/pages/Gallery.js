@@ -53,7 +53,7 @@ function Gallery() {
       imgName: img,
     }
     console.log(newHamster);
-    const res = await fetch(`https://hamsterwarsapi.onrender.com/hamsters`, {
+    const res = await fetch(`${baseURL}/hamsters/`, {
       method: "POST",
       body: JSON.stringify(newHamster),
       headers: { "Content-Type": "application/json" }

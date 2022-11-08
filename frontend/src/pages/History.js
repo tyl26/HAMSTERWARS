@@ -74,7 +74,7 @@ function History() {
                                         <p className='name'>Loser: {loser.name}</p>
                                     </section>
                                 </section>
-                                <button className='deleteMatch' onClick={() => deleteMatch(match._id)}> Romove</button>
+                                <button className='deleteMatch' onClick={() => deleteMatch(match._id)}> Remove</button>
                             </section>
                         </div>
 
