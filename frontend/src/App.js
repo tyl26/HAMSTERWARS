@@ -6,7 +6,6 @@ import Battle from './pages/Battle';
 import Statistik from './pages/Statistik';
 import History from './pages/History';
 
-console.log(process.env.NODE_ENV);
 
 function App() {
   return (

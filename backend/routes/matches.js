@@ -13,9 +13,8 @@ routes.route('/matches').get(function (req, response) {
         .find({})
         .toArray(function (err, result) {
 
-            if (err) {
-                response.status(404).json('opp cant find hamsters')
-            }
+            if (err) throw response.status(404).json('opp cant find hamsters')
+
             response.status(200).json(result)
         })
 })
@@ -42,15 +41,22 @@ routes.route("/matches").post(function (req, res) {
 });
 //Delete match
 routes.route('/matches/:id').delete(async function (req, res) {
-    let db_connect = db.getDb();
+    let connectDB = db.getDb();
     let myquery = {
         _id: ObjectId(req.params.id)
     };
-   await db_connect
+    await connectDB
         .collection('matches')
         .deleteOne(myquery, function (err) {
-            if (err) throw err;
-            res.status(200);
+            if (err) {
+                
+                res.status(400).json(err)
+
+            } else {
+
+                res.status(200).json(myquery);
+
+            }
 
         })
 });

@@ -26,13 +26,16 @@ function History() {
 
     //tar bort hamstrarna från historiken md hjälp av id
     async function deleteMatch(id) {
-        window.location.reload();
-        const response = await fetch(`${baseURL}/matches/` + id,
-            { method: 'DELETE' })
 
-        const data = await response.json()
+        const response = await fetch(`${baseURL}/matches/` + id,
+            {
+                method: 'DELETE'
+            })
+
+        const data = await response.text()
         console.log(data);
-        console.log('Deleted: ')
+        // console.log(response.status);
+        // console.log('Deleted: ')
 
 
     }
@@ -56,7 +59,7 @@ function History() {
                 {matches.length > 0 && Hamsters.length > 0 ? [...matches].reverse().map(match => {
 
                     // jämför om match id matccher med hamster id. Om matchar ska vi kunna ha till gång till info så som bilder och namn.
-                    let winner = Hamsters.find(id => { return id._id === match.winner });
+                    let winner = Hamsters.find(({ _id }) => _id === match.winner);
                     let loser = Hamsters.find(({ _id }) => _id === match.loser);
 
                     return (
@@ -70,8 +73,8 @@ function History() {
                                         <p className='name'> Winner: {winner && winner.name} </p>
                                     </section>
                                     <section>
-                                        <img className='battleImg' src={loser.imgName} alt="" width="300" height="300" />
-                                        <p className='name'>Loser: {loser.name}</p>
+                                        <img className='battleImg' src={loser && loser.imgName} alt="" width="300" height="300" />
+                                        <p className='name'>Loser: {loser && loser.name}</p>
                                     </section>
                                 </section>
                                 <button className='deleteMatch' onClick={() => deleteMatch(match._id)}> Remove</button>
