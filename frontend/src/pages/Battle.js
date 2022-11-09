@@ -7,7 +7,6 @@ import { baseURL } from '../utils/baseURL';
 
 function Battle() {
     const [battle, setHamsterBattle] = useState([])
-    const [setMatch] = useState([])
     const [winner, setWinner] = useState()
     const [loser, setLoser] = useState()
     const [modal, setModal] = useState(false);
@@ -15,7 +14,7 @@ function Battle() {
 
     //fetchar random hamsters
     function getRandom() {
-        fetch(`http://localhost:1997/hamster/random`)
+        fetch(`${baseURL}/hamster/random`)
             .then(res => res.json())
             .then(data => setHamsterBattle(data))
     }
@@ -97,10 +96,6 @@ function Battle() {
         const matchObj = {
             winner: winner._id,
             loser: loser._id,
-            namewinner: winner.name,
-            nameloser: loser.name,
-            gameswinner: winner.games,
-            gamesloser: loser.games
         }
         const response = await fetch(`${baseURL}/matches`, {
             method: 'POST',
@@ -121,17 +116,17 @@ function Battle() {
 
             {/* mappar listan för att få random hamster */}
             <section className='battleContainer'>
-                {battle.length>0 && battle.map((hamster, i) =>
+                {battle.length > 0 ? battle.map((hamster, i) =>
                     <section key={i}>
 
-                        <img className='battleImg' src={hamster.imgName} alt='battlePic' onClick={() => {
+                        <img className='battleImg' src={hamster && hamster.imgName} alt='battlePic' onClick={() => {
                             handleCute(hamster, battle?.filter(hams => hams !== hamster)[0])
                         }} />
-                        <h1 className='name'>{hamster.name}</h1>
+                        <h1 className='name'>{hamster && hamster.name}</h1>
 
                     </section>
 
-                )}
+                ) : null}
 
             </section>
 

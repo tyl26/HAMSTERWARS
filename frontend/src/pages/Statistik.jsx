@@ -35,10 +35,10 @@ function Statistik() {
                             return (
                                 <section key={winners._id} >
 
-                                    <section className='topWinners'>
+                                    <section className='top'>
                                         <img className='topImg' src={winners.imgName} alt="" />
                                         <h2 className='name'>{winners.name}</h2>
-                                        <b>Wins</b><p>{winners.wins}</p>
+                                        <p><b>Wins: </b>{winners.wins} <b>points</b></p>
                                     </section>
                                 </section>
                             )
@@ -55,10 +55,10 @@ function Statistik() {
                         .map(defeat => {
                             return (
                                 <section key={defeat._id}>
-                                    <section className='topWinners'>
+                                    <section className='top'>
                                         <img className='topImg' src={defeat.imgName} alt="" />
                                         <h2 className='name'>{defeat.name}</h2>
-                                        <b>Loses</b><p>{defeat.defeats}</p>
+                                        <p><b>Loses: </b>{defeat.defeats} <b>points</b></p>
                                     </section>
                                 </section>
                             )

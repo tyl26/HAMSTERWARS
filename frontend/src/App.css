@@ -13,6 +13,9 @@ img{
   border: var(--img-border-color) 5px solid;
   border-radius: 1rem;
 }
+b{
+  font-size: 1.4rem;
+}
 
 
 :root {
@@ -179,17 +182,21 @@ img{
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin: 1rem;
+  padding: 4rem;
 }
 .addForm h1 {
   font-family: var(--sec-font);
 }
 
 .inputText {
-  padding: 1rem;
+  padding: .8rem;
   border: var(--primBack-color) 2px solid;
   width: 60vw;
   border-radius: 2rem;
+  font-size: 1.5rem;
+  font-family: var(--prim-font);
+  font-weight: 700;
+  /* border: none; */
 
 }
 
@@ -207,24 +214,38 @@ img{
 
 /* hamsterinfo  */
 .infoContainer {
-  padding: 2rem;
+  padding: 5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex-wrap: wrap;
 
 }
-
-.infoContainer li {
+.infoName{
+  font-size: 2.8rem;
   font-family: var(--prim-font);
-  font-size: 1.5rem;
+  text-align: center;
+  margin-top: -6rem;
+}
+
+.Container li {
+  font-family: var(--prim-font);
+  font-size: 1.8rem;
   text-align: center;
   margin-top: 2rem;
   list-style-type: none;
+  font-weight: 600;
+}
+.infoContainer b{
+  font-size: 2rem;
+  color: var(--primBack-color);
+  text-decoration: underline;
 }
 
 .infoContainer img {
   width: 300px;
   margin: 0 auto;
+  align-self: center;
 }
 
 /* battle css */
@@ -347,7 +368,7 @@ img{
   outline: none;
   padding: 20px;
   max-width: 95vw;
-  height: 90vh;
+  height: 95vh;
 
   /* margin: 2rem; */
 
@@ -391,7 +412,7 @@ img{
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
-  gap: 8rem;
+  gap: 10rem;
 }
 
 .topFives h1 {
@@ -400,12 +421,15 @@ img{
   color: var(--btn-border-color);
 }
 
-.topFives h2 {
-  font-size: 1.5rem;
-  font-family: var(--prim-font);
-}
 
 .topImg{
   width: 320px;
   height: 300px;
+  margin-top: 2rem;
+}
+.top p {
+  font-family: var(--prim-font);
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: -.5rem;
 }

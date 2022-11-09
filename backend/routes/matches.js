@@ -13,9 +13,13 @@ routes.route('/matches').get(function (req, response) {
         .find({})
         .toArray(function (err, result) {
 
-            if (err) throw response.status(404).json('opp cant find hamsters')
+            if (err) {
+                response.status(404).json('opp cant find hamsters')
+            }else{
 
-            response.status(200).json(result)
+                response.status(200).json(result)
+            }
+
         })
 })
 
@@ -25,18 +29,18 @@ routes.route("/matches").post(async function (req, res) {
     let newMatch = {
         winner: req.body.winner,
         loser: req.body.loser,
-        namewinner: req.body.namewinner,
-        nameloser: req.body.nameloser,
-        gameswinner: req.body.gameswinner,
-        gamesloser: req.body.gamesloser
+
     };
-   await db.getDb('Hamsters')
+    await db.getDb('Hamsters')
         .collection('matches')
         .insertOne(newMatch, function (err, result) {
             if (err) {
                 response.status(400).json('ops something went wrong')
+            } else {
+
+                res.status(200).json(newMatch)
+
             }
-            res.status(200).json(newMatch)
         });
 });
 

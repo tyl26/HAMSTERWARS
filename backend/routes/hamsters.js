@@ -102,8 +102,13 @@ routes.route('/hamsters/:id').delete(async function (req, res) {
     await connectDB
         .collection('hamster')
         .deleteOne(myquery, function (err) {
-            if (err) throw err;
-            res.sendStatus(200);
+            if (err) {
+                res.status(404).json('ops, cant find hamsters')
+
+            }else{
+
+                res.sendStatus(200);
+            }
         })
 
 })
@@ -131,8 +136,13 @@ routes.route('/hamster/random').get(function (req, res) {
             //sätter båda hamster i en varible
             let randomHamsters = [randomHamsterOne, randomHamstertwo]
 
-            if (err) throw err;
-            res.json(randomHamsters)
+            if (err) {
+                response.status(404).json('ops, cant find hamsters')
+
+            }else{
+
+                res.status(200).json(randomHamsters)
+            }
         })
 });
 

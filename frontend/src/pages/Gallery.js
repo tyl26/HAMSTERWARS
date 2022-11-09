@@ -9,7 +9,7 @@ import { FaHistory } from 'react-icons/fa'
 
 
 import Modal from 'react-modal'
-import { Link, redirect, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 //min URL som jag har fått från render
@@ -44,7 +44,7 @@ function Gallery() {
 
   //lägger till en ny hamster
   async function addNewHamster() {
-   
+
     const newHamster = {
       name: name,
       age: age,
@@ -62,7 +62,7 @@ function Gallery() {
     //och uppdaterar den nya listan med den nya hamster
     const data = await res.json()
     setAllHamsters([...AllHamsters, data])
-    
+
     toggleModal()
   }
 
@@ -130,7 +130,7 @@ function Gallery() {
           ariaHideApp={false}
         >
 
-          <form className='addForm' onSubmit={(e) => {addNewHamster(); e.preventDefault()}}>
+          <form className='addForm' onSubmit={(e) => { addNewHamster(); e.preventDefault() }}>
             <h1 >Add your Hamster</h1>
             <b>Name:</b>
             <label>
@@ -162,7 +162,7 @@ function Gallery() {
 
 
         {/* mappar hamster och loading spinner */}
-        {AllHamsters? AllHamsters.map((hamster, i) =>
+        {AllHamsters ? AllHamsters.map((hamster, i) =>
 
           <section key={i} >
 
@@ -183,11 +183,15 @@ function Gallery() {
             <div onClick={infoModal} className="myoverlay"></div>
             <div className="mymodal">
               <ul className='infoContainer'>
-                <img src={hamsterInfo ? hamsterInfo.imgName : null} alt="profilePic" />
-                <li><b>Name</b>: <br />{hamsterInfo ? hamsterInfo.name : null}</li>
-                <li><b>Age</b>: <br /> {hamsterInfo ? hamsterInfo.age : null}</li>
-                <li><b>Loves</b>: <br />{hamsterInfo ? hamsterInfo.loves : null}</li>
-                <li><b>Favorite Foods</b>: <br /> Foods{hamsterInfo ? hamsterInfo.favFood : null}</li>
+                <section>
+                  <h1 className='infoName'>{hamsterInfo ? hamsterInfo.name : null}</h1>
+                  <img src={hamsterInfo ? hamsterInfo.imgName : null} alt="profilePic" />
+                </section>
+                <section>
+                  <li><b>Age</b>: <br /> {hamsterInfo ? hamsterInfo.age : null}</li>
+                  <li><b>Loves</b>: <br />{hamsterInfo ? hamsterInfo.loves : null}</li>
+                  <li><b>Favorite Foods</b>: <br /> Foods{hamsterInfo ? hamsterInfo.favFood : null}</li>
+                </section>
               </ul>
               <button className="close-modal" onClick={() => infoModal()}>
                 X
