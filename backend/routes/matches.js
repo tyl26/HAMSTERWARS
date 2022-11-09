@@ -59,7 +59,7 @@ routes.route('/matches/:id').delete(async function (req, res) {
 
             } else {
 
-                res.status(200).json(myquery);
+                res.sendStatus(200);
 
             }
 
