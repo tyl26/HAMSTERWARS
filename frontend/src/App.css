@@ -103,6 +103,7 @@ b{
   justify-content: space-around;
   margin-top: 3rem;
   gap: 2rem;
+  overflow-y: hidden;
 }
 
 .galleryTitle {
@@ -214,11 +215,13 @@ b{
 
 /* hamsterinfo  */
 .infoContainer {
-  padding: 5rem;
+  margin-top: 8rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
+  margin-right: 2rem;
+  /* width: 500px; */
 
 }
 .infoName{
@@ -228,7 +231,7 @@ b{
   margin-top: -6rem;
 }
 
-.Container li {
+.infoContainer li{
   font-family: var(--prim-font);
   font-size: 1.8rem;
   text-align: center;
@@ -243,7 +246,7 @@ b{
 }
 
 .infoContainer img {
-  width: 300px;
+  width: 250px;
   margin: 0 auto;
   align-self: center;
 }
@@ -342,6 +345,7 @@ b{
   padding: 2rem;
   margin: 0 5rem 0 5rem;
   border-radius: 2rem;
+  
 }
 
 
@@ -366,8 +370,8 @@ b{
   overflow: auto;
   border-radius: 4px;
   outline: none;
-  padding: 20px;
-  max-width: 95vw;
+  /* padding: 20px; */
+ width: 90vw;
   height: 95vh;
 
   /* margin: 2rem; */
