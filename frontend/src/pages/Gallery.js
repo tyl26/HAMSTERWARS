@@ -35,7 +35,7 @@ function Gallery() {
 
   //hämtar alla hamstrar
   function getAllHamsters() {
-    fetch(`https://hamsterwarsapi.onrender.com/hamsters`)
+    fetch(`${baseURL}/hamsters`)
       .then((res) => res.json())
       .then((data) => setAllHamsters(data))
   }
