@@ -38,7 +38,7 @@ routes.route("/matches").post(async function (req, res) {
                 response.status(400).json('ops something went wrong')
             } else {
 
-                res.status(200).json(newMatch)
+                res.status(200).json(result)
 
             }
         });

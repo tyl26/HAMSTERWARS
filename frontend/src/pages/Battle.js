@@ -103,8 +103,8 @@ function Battle() {
             headers: { "Content-Type": "application/json" }
         });
 
-        const data = await response.json();
-        console.log(data);
+        const data = await response.text();
+    //    console.log(data);
     }
     return (
         <div>
