@@ -21,7 +21,7 @@ routes.route('/matches').get(function (req, response) {
 
 
 //POST new match
-routes.route("/matches").post(function (req, res) {
+routes.route("/matches").post(async function (req, res) {
     let newMatch = {
         winner: req.body.winner,
         loser: req.body.loser,
@@ -30,7 +30,7 @@ routes.route("/matches").post(function (req, res) {
         gameswinner: req.body.gameswinner,
         gamesloser: req.body.gamesloser
     };
-    db.getDb('Hamsters')
+   await db.getDb('Hamsters')
         .collection('matches')
         .insertOne(newMatch, function (err, result) {
             if (err) {
@@ -39,6 +39,7 @@ routes.route("/matches").post(function (req, res) {
             res.status(200).json(newMatch)
         });
 });
+
 //Delete match
 routes.route('/matches/:id').delete(async function (req, res) {
     let connectDB = db.getDb();
@@ -49,7 +50,7 @@ routes.route('/matches/:id').delete(async function (req, res) {
         .collection('matches')
         .deleteOne(myquery, function (err) {
             if (err) {
-                
+
                 res.status(400).json(err)
 
             } else {

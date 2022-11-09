@@ -34,9 +34,7 @@ function History() {
 
         const data = await response.text()
         console.log(data);
-        // console.log(response.status);
-        // console.log('Deleted: ')
-
+        window.location.reload()
 
     }
 

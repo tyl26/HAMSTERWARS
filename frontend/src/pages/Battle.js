@@ -15,7 +15,7 @@ function Battle() {
 
     //fetchar random hamsters
     function getRandom() {
-        fetch(`${baseURL}/hamster/random`)
+        fetch(`http://localhost:1997/hamster/random`)
             .then(res => res.json())
             .then(data => setHamsterBattle(data))
     }
@@ -107,9 +107,9 @@ function Battle() {
             body: JSON.stringify(matchObj),
             headers: { "Content-Type": "application/json" }
         });
-        const data = await response.text();
+
+        const data = await response.json();
         console.log(data);
-        setMatch({ "winner": winner._id, "loser": loser._id })
     }
     return (
         <div>
@@ -121,7 +121,7 @@ function Battle() {
 
             {/* mappar listan för att få random hamster */}
             <section className='battleContainer'>
-                {battle && battle.map((hamster, i) =>
+                {battle.length>0 && battle.map((hamster, i) =>
                     <section key={i}>
 
                         <img className='battleImg' src={hamster.imgName} alt='battlePic' onClick={() => {
