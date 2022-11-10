@@ -169,6 +169,7 @@ b {
 .galleryImg {
   width: 250px;
   height: 200px;
+  cursor: pointer;
 }
 
 .hamsterName {
@@ -396,7 +397,6 @@ b {
   width: 350px;
   height: 300px;
   border-radius: 1rem;
-  cursor: pointer;
 }
 
 .close-modal {
