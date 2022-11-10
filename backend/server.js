@@ -17,13 +17,13 @@ app.use(cors({
 
 app.use(
     express.json({
-      limit: "500mb",
+      limit: "5000mb",
       extended: true,
     })
   );
   app.use(
     express.urlencoded({
-      limit: "500mb",
+      limit: "5000mb",
       extended: true,
     })
   );
