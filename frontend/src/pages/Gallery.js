@@ -52,7 +52,7 @@ function Gallery() {
       loves: Loves,
       imgName: img,
     }
-    
+
     const res = await fetch(`${baseURL}/hamsters/`, {
       method: "POST",
       body: JSON.stringify(newHamster),
@@ -150,6 +150,7 @@ function Gallery() {
             </label>
 
             <FileBase64 multiple={false}
+              type='file'
               onDone={({ base64 }) => setImg(base64)} />
 
             <input className='submitBtn' type="submit" />
@@ -183,13 +184,13 @@ function Gallery() {
             <div onClick={infoModal} className="myoverlay"></div>
             <div className="mymodal">
               <ul className='infoContainer'>
-                
-                  <h1 className='infoName'>{hamsterInfo ? hamsterInfo.name : null}</h1>
-                  <img src={hamsterInfo ? hamsterInfo.imgName : null} alt="profilePic" />
-                  <li><b>Age</b>: <br /> {hamsterInfo ? hamsterInfo.age : null}</li>
-                  <li><b>Loves</b>: <br />{hamsterInfo ? hamsterInfo.loves : null}</li>
-                  <li><b>Favorite Foods</b>: <br /> Foods{hamsterInfo ? hamsterInfo.favFood : null}</li>
-               
+
+                <h1 className='infoName'>{hamsterInfo ? hamsterInfo.name : null}</h1>
+                <img src={hamsterInfo ? hamsterInfo.imgName : null} alt="profilePic" />
+                <li><b>Age</b>: <br /> {hamsterInfo ? hamsterInfo.age : null}</li>
+                <li><b>Loves</b>: <br />{hamsterInfo ? hamsterInfo.loves : null}</li>
+                <li><b>Favorite Foods</b>: <br /> Foods{hamsterInfo ? hamsterInfo.favFood : null}</li>
+
               </ul>
               <button className="close-modal" onClick={() => infoModal()}>
                 X
