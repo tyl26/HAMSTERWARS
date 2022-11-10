@@ -6,6 +6,7 @@ import { IoIosCloseCircle } from 'react-icons/io'
 import { IoChevronBackCircleSharp } from 'react-icons/io5'
 import { IoStatsChart } from 'react-icons/io5'
 import { FaHistory } from 'react-icons/fa'
+import DotLoader from 'react-spinners/BeatLoader'
 
 
 import Modal from 'react-modal'
@@ -29,15 +30,17 @@ function Gallery() {
   const [img, setImg] = useState()
   const [isOpen, setIsOpen] = useState(false)
   const [modal, setModal] = useState(false);
+  const [loading , setLoading]= useState(false)
 
   const navigate = useNavigate()
 
 
   //hämtar alla hamstrar
   function getAllHamsters() {
+    setLoading(true)
     fetch(`${baseURL}/hamsters`)
       .then((res) => res.json())
-      .then((data) => setAllHamsters(data))
+      .then((data) => {setLoading(false); setAllHamsters(data);})
   }
 
 
@@ -62,7 +65,6 @@ function Gallery() {
     //och uppdaterar den nya listan med den nya hamster
     const data = await res.json()
     setAllHamsters([...AllHamsters, data])
-
     toggleModal()
   }
 
@@ -163,7 +165,7 @@ function Gallery() {
 
 
         {/* mappar hamster och loading spinner */}
-        {AllHamsters ? AllHamsters.map((hamster, i) =>
+        {loading && AllHamsters ? <DotLoader color='#E8B12D'size={50}/> : AllHamsters.map((hamster, i) =>
 
           <section key={i} >
 
@@ -173,8 +175,7 @@ function Gallery() {
               <h1 className='hamsterName'>{hamster.name}</h1>
 
             </section>
-          </section>) :
-          null
+          </section>) 
         }
 
 
