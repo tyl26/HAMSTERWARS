@@ -151,7 +151,7 @@ function Gallery() {
 
             <FileBase64 multiple={false}
               type='file'
-              onDone={({ base64 }) => setImg(base64)} />
+              onDone={({ base64 }) => {setImg(base64)}} />
 
             <input className='submitBtn' type="submit" />
 
