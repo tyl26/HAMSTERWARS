@@ -1,4 +1,7 @@
 # HAMSTERWARS-inlamning
+https://hamsterwars-c1yj.onrender.com/
+
+It may be slow to load the data, as it is a shared free service on render. try refreshing :)
 
 ## Om Appen
 
